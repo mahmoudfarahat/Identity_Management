@@ -21,14 +21,14 @@ namespace IdentityManagement.Data
 
             //builder.HasDefaultSchema("");
 
-            builder.Entity<ApplicationUser>().ToTable("Users","Secuitry").Ignore(e => e.PhoneNumberConfirmed);
-            builder.Entity<IdentityRole>().ToTable("Roles", "Secuitry");
-            builder.Entity<IdentityUserRole<string>>().ToTable("UserRoles", "Secuitry");
-            builder.Entity<IdentityUserClaim<string>>().ToTable("UserClaims", "Secuitry");
-            builder.Entity<IdentityUserLogin<string>>().ToTable("UserLogins", "Secuitry");
-            builder.Entity<IdentityUserRole<string>>().ToTable("UserRoles", "Secuitry");
-            builder.Entity<IdentityRoleClaim<string>>().ToTable("RoleClaims", "Secuitry");
-            builder.Entity<IdentityUserToken<string>>().ToTable("UserTokens", "Secuitry");
+            builder.Entity<ApplicationUser>().ToTable("Users", "Security").Ignore(e => e.PhoneNumberConfirmed);
+            builder.Entity<IdentityRole>().ToTable("Roles", "Security");
+            builder.Entity<IdentityUserRole<string>>().ToTable("UserRoles", "Security");
+            builder.Entity<IdentityUserClaim<string>>().ToTable("UserClaims", "Security");
+            builder.Entity<IdentityUserLogin<string>>().ToTable("UserLogins", "Security");
+            builder.Entity<IdentityUserRole<string>>().ToTable("UserRoles", "Security");
+            builder.Entity<IdentityRoleClaim<string>>().ToTable("RoleClaims", "Security");
+            builder.Entity<IdentityUserToken<string>>().ToTable("UserTokens", "Security");
 
 
 
