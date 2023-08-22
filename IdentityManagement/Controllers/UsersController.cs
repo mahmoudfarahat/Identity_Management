@@ -59,6 +59,10 @@ namespace IdentityManagement.Controllers
             return View(userViewModels);
         }
 
+        public async Task<IActionResult> ManageRoles()
+        {
+
+        }
 
 
     }

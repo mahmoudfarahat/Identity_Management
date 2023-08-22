@@ -25,7 +25,9 @@
                 <th>@user.UserName</th>
                 <th>@user.Email</th>
                 <th>@String.Join(" , ",user.Roles.ToList()) </th>
-                <th>Actions</th>
+                <th>
+                    <a class="btn btn-primary" asp-controller="Users" asp-action="ManageRoles" asp-route-userId="@user.Id">Manage Roles</a>
+                </th>
 
             </tr>
         }
