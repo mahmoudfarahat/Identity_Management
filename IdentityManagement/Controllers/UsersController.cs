@@ -118,5 +118,21 @@ namespace IdentityManagement.Controllers
             }
             return RedirectToAction(nameof(Index));
         }
+
+       public async Task<IActionResult> Add()
+        {
+            var roles = await roleManager.Roles.Select( r => new RoleViewModel
+            {
+                RoleName= r.Name
+            }).ToListAsync();
+
+            var viewModel = new AddUserViewModel
+            {
+                Roles = roles
+            };
+            return View(viewModel);
+        }
+
+
     }
 }
