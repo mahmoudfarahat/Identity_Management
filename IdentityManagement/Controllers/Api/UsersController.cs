@@ -1,4 +1,5 @@
 ﻿using IdentityManagement.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -11,6 +12,7 @@ namespace IdentityManagement.Controllers.Api
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize(Roles ="Admin")]
     public class UsersController : ControllerBase
     {
         private readonly UserManager<ApplicationUser> userManager;
@@ -27,8 +29,9 @@ namespace IdentityManagement.Controllers.Api
             var user = await userManager.FindByIdAsync(userId);
             if (user == null)
                 return NotFound();
-            await userManager.DeleteAsync(user);
-
+           var result = await userManager.DeleteAsync(user);
+            if (!result.Succeeded)
+                throw new Exception();
             return Ok();
         }
 

@@ -5,6 +5,10 @@
 }
 <h1>Users</h1>
 <a asp-action="Add" class="btn btn-primary">Add New</a>
+<div id="alert" class="alert alert-success alert-dismissible fade mt-4 d-none" role="alert">
+    <strong>Holy guacamole!</strong> You should check in on some of those fields below.
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
 
 <table class="table table-striped" mt-4>
     <thead>
@@ -37,3 +41,48 @@
         }
     </tbody>
 </table>
+
+
+@section Scripts{ 
+<script>
+    $(document).ready(function () {
+        $(".js-delete").on('click', function () {
+            var btn = $(this);
+             
+            bootbox.confirm({
+                message: "Are you sure that you need to delete this user?",
+                buttons: {
+                    confirm: {
+                        label: 'Yes',
+                        className: 'btn-danger'
+                    },
+                    cancel: {
+                        label: 'No',
+                        className:'btn-success'
+                    }
+                },
+                callback: function (result) {
+                    if (result) {
+                        $.ajax({
+                            url: '/api/users?userId='+btn.data('id'),
+                            method: 'DELETE',
+                            success: function () {
+                                btn.parents('tr').fadeOut();
+                                /*    btn.parent('tr').remove();*/
+                                $('#alert').removeClass('d-none');
+                                $('#alert').addClass('show');
+
+
+                            },
+                            error: function () {
+
+                            }
+                        })
+                    }
+                }
+            })
+           
+        })
+    });
+</script>
+}

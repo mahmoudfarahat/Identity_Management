@@ -6,7 +6,10 @@
 
 <h1>@ViewData["Title"]</h1>
 @{
-    if (@Model.DisplayConfirmAccountLink)
+    <p>
+        Please check your email to confirm your account.
+    </p>
+    @*if (@Model.DisplayConfirmAccountLink)
     {
 <p>
     This app does not currently have a real email sender registered, see <a href="https://aka.ms/aspaccountconf">these docs</a> for how to configure a real email sender.
@@ -15,8 +18,6 @@
     }
     else
     {
-<p>
-        Please check your email to confirm your account.
-</p>
-    }
+
+    }*@
 }
